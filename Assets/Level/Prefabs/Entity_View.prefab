@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33fde7cf71279245ae169ced0d73d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4188822566315278753}
   _healthBar: {fileID: 7566259958933116072}
 --- !u!1 &7555925428202117967
 GameObject:
@@ -190,7 +191,7 @@ GameObject:
   - component: {fileID: 7107230414456199903}
   - component: {fileID: 4188822566315278753}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

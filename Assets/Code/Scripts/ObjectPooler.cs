@@ -30,6 +30,19 @@ public class ObjectPooler
         }
     }
     
+    public void AddObject(GameObject objectToAdd, Transform parent, bool disable)
+    {
+        if (objectToAdd == null)
+            return;
+
+        _objectPool.Add(objectToAdd);
+
+        if (parent != null)
+            objectToAdd.transform.parent = parent;
+
+        objectToAdd.gameObject.SetActive(!disable);
+    }
+
     public GameObject PoolObject()
     {
         for (int i = 0; i < _objectPool.Count; i++)

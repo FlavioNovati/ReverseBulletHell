@@ -64,8 +64,47 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.15659487
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3193304948420991345, guid: 9a7d5d0106a9a774abb9061b819c23e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2754852497146908151, guid: 9a7d5d0106a9a774abb9061b819c23e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8784245383960421685}
   m_SourcePrefab: {fileID: 100100000, guid: 9a7d5d0106a9a774abb9061b819c23e5, type: 3}
+--- !u!114 &3998282217324333599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7566259958933116072, guid: 9a7d5d0106a9a774abb9061b819c23e5, type: 3}
+  m_PrefabInstance: {fileID: 6808318001026735799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee24c32f13b3c54ab08b5e2a0eb4c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!212 &7232128751268814614 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4188822566315278753, guid: 9a7d5d0106a9a774abb9061b819c23e5, type: 3}
+  m_PrefabInstance: {fileID: 6808318001026735799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8666951973269050176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2754852497146908151, guid: 9a7d5d0106a9a774abb9061b819c23e5, type: 3}
+  m_PrefabInstance: {fileID: 6808318001026735799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8784245383960421685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666951973269050176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70265863c9d0b00488b0fa79be479cad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 7232128751268814614}
+  _healthBar: {fileID: 3998282217324333599}

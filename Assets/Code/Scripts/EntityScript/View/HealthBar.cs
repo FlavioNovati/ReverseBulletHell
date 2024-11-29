@@ -1,25 +1,29 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
-public class HealthBar: MonoBehaviour
+namespace Entity_System.Entity.UI
 {
-    private Vector3 _initialScale;
-    private SpriteRenderer _spriteRenderer;
-
-    private void Awake()
+    [RequireComponent(typeof(SpriteRenderer))]
+    public class HealthBar: MonoBehaviour
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _initialScale = _spriteRenderer.transform.localScale;
-    }
+        private Vector3 _initialScale;
+        private SpriteRenderer _spriteRenderer;
 
-    public float Progress
-    {
-        set
+        private void Awake()
         {
-            value = Mathf.Clamp01(value);
-            Vector3 scale = _initialScale;
-            scale.x *= value;
-            _spriteRenderer.transform.localScale = scale;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _initialScale = _spriteRenderer.transform.localScale;
+        }
+
+        public float Progress
+        {
+            set
+            {
+                value = Mathf.Clamp01(value);
+                Vector3 scale = _initialScale;
+                scale.x *= value;
+                _spriteRenderer.transform.localScale = scale;
+            }
         }
     }
+
 }
