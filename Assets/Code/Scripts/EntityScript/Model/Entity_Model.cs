@@ -11,13 +11,18 @@ namespace Entity_System.Entity
         private Vector2 _direction;
 
         private float _hp;
-        private float _attack;
         private float _velocity;
+
+        public Entity_Model(Entity_SO entitySO)
+        {
+            _hp = entitySO.HP;
+            _velocity = entitySO.Velocity;
+        }
 
         public virtual void Damage(float damage) => HP -= damage;
         public virtual void Heal(float amount) => HP += amount;
 
-        protected float HP
+        public float HP
         {
             get => _hp;
             set
@@ -37,12 +42,6 @@ namespace Entity_System.Entity
         {
             get => _direction;
             set => _direction = value;
-        }
-    
-        public float Attack
-        {
-            get => _attack;
-            set => _attack = value;
         }
 
         public float Velocity

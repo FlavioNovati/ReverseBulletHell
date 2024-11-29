@@ -2,28 +2,28 @@ using UnityEngine;
 
 namespace Entity_System.Entity.Player
 {
-    public class Player_Controller
+    public class Player_Controller: Entity_Controller
     {
         private Player_Model _model;
         private Entity_View _view;
 
-        public Player_Controller(Player_Model model, Entity_View view)
+        public Player_Controller(Player_Model model, Entity_View view): base(model, view)
         {
             _model = model;
             _view = view;
         }
 
-        public void Enable()
+        public override void Enable()
         {
 
         }
 
-        public void TickController()
+        public override void TickController()
         {
-
+            UpdatePosition(_view.transform.position);
         }
 
-        public void Disable()
+        public override void Disable()
         {
 
         }
