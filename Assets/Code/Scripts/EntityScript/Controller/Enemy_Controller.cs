@@ -20,7 +20,7 @@ namespace Entity_System.Entity.Enemy
 
         private void UpdateView()
         {
-            _view.SetDirection(_model.Direction);
+            _view.SetLookDirection(_model.Direction);
             _view.SetPosition(_model.Position);
             _view.SetHealth(_model.HP);
         }

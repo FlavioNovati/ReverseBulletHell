@@ -11,10 +11,10 @@ namespace Entity_System.Entity
         [SerializeField] private HealthBar _healthBar;
         
         public void SetPosition(Vector2 position) => transform.position = position;
-        public void SetDirection(Vector2 direction)
+        public void SetLookDirection(Vector2 lookDir)
         {
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            _spriteRenderer.transform.localEulerAngles = new Vector3(0f, 0f, angle);
+            _spriteRenderer.transform.rotation = Quaternion.LookRotation( new Vector3(lookDir.x, lookDir.y, 0f));
+            _spriteRenderer.transform.rotation *= new Quaternion(90f, 0f, 0f, 0f);
         }
 
         public void SetHealth(float percentage) => _healthBar.Progress = percentage;

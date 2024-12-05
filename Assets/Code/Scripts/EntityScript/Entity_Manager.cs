@@ -84,7 +84,7 @@ namespace Entity_System
             for(int i=0; i < _activeControllers.Count; i++)
                 TickEnemy(_activeControllers[i]);
         }
-
+        
         private void TickEnemy(Enemy_Controller enemyController)
         {
             //Update rotation
