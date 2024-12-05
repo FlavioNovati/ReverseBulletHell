@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 132853228}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.48, y: 2.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -367,7 +367,11 @@ MonoBehaviour:
   _playerSO: {fileID: 11400000, guid: bb08c3824cbf53c49a6f18fe1c03f2c9, type: 2}
   _playerSpawnTransform: {fileID: 132853229}
   _enemySO: {fileID: 11400000, guid: d8142af3200c25241a6285c9ac2f4615, type: 2}
-  initialEnemyAmount: 15
+  _spawnRadius: 15
+  _spawnAreaColor: {r: 1, g: 1, b: 1, a: 1}
+  _maxRadius: 20
+  _maxRadiusColor: {r: 1, g: 0, b: 0, a: 1}
+  initialEnemyAmount: 60
 --- !u!1 &1916706398
 GameObject:
   m_ObjectHideFlags: 0
