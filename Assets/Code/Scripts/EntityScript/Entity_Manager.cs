@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using Entity_System.Entity.Enemy;
 using Entity_System.Entity.Player;
 
@@ -14,6 +18,10 @@ namespace Entity_System
         [Space]
         [Header("Enemy")]
         [SerializeField] private Enemy_SO _enemySO;
+        [SerializeField] private float _spawnRadius = 15f;
+        [SerializeField] private Color _spawnAreaColor = Color.white;
+        [SerializeField] private float _maxRadius = 20f;
+        [SerializeField] private Color _maxRadiusColor = Color.red;
         [SerializeField] private int initialEnemyAmount = 15;
 
         private Player_Controller _playerController;
@@ -32,16 +40,20 @@ namespace Entity_System
             playerView.transform.position = _playerSpawnTransform.position;
             //Initialize Player Model
             _playerModel = new Player_Model(_playerSO);
+
             _playerModel.Position = _playerSpawnTransform.position;
             //Initialize Player Controller
             _playerController = new Player_Controller(_playerModel, playerView);
-
+            
 
             //Initialize Enemies
             //Model
             _enemyList = new List<Enemy_Model>();
             for (int i = 0; i < initialEnemyAmount; i++)
+            {
                 _enemyList.Add(new Enemy_Model(_enemySO));
+                _enemyList[^1].Position = GetRandomPosition();
+            }
             //View
             _enemyViewPooler = new ObjectPooler(_enemySO.View.gameObject, initialEnemyAmount, transform);
             _enemyViewList = new List<Enemy_View>();
@@ -84,7 +96,7 @@ namespace Entity_System
             for(int i=0; i < _activeControllers.Count; i++)
                 TickEnemy(_activeControllers[i]);
         }
-        
+
         private void TickEnemy(Enemy_Controller enemyController)
         {
             //Update rotation
@@ -94,7 +106,55 @@ namespace Entity_System
             //Update Distance
             model.DistanceFromTarget = model.Direction.magnitude;
 
+            if(model.DistanceFromTarget >= _maxRadius)
+            {
+                enemyController.Disable();
+                _activeControllers.Remove(enemyController);
+                return;
+            }
+
+            if(model.DistanceFromTarget <= model.AttackDistance)
+                _playerModel.Damage(model.AttackDamage);
+
             enemyController.TickController();
         }
+
+        private Vector2 GetRandomPosition()
+        {
+            Vector2 spawnPos = Random.insideUnitCircle.normalized * _spawnRadius;
+            spawnPos += _playerModel.Position;
+            return spawnPos;
+        }
+        
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+
+            if(!Application.isPlaying)
+            {
+                Handles.color = _spawnAreaColor;
+                Handles.DrawWireDisc(transform.position, Vector3.forward, _spawnRadius);
+                Handles.color = _maxRadiusColor;
+                Handles.DrawWireDisc(transform.position, Vector3.forward, _maxRadius);
+            }
+            else
+            {
+                if(_playerModel != null)
+                {
+                    Handles.color = _spawnAreaColor;
+                    Handles.DrawWireDisc(_playerModel.Position, Vector3.forward, _spawnRadius);
+                    Handles.color = _maxRadiusColor;
+                    Handles.DrawWireDisc(_playerModel.Position, Vector3.forward, _maxRadius);
+                }
+
+                foreach(Enemy_Controller controller in _activeControllers)
+                {
+                    Handles.color = Color.green;
+                    Handles.DrawWireDisc(controller.Position, Vector3.forward, controller.Model.AttackDistance);
+                }
+            }
+        }
+#endif
+
     }
 }
