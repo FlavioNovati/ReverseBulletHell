@@ -1,7 +1,11 @@
+using System;
+
 namespace Entity_System.Entity.Enemy
 {
     public class Enemy_Model : Entity_Model
     {
+        public Action<bool> OnViewModeChanged;
+
         private bool _inView;
 
         private float _attackDistance;
@@ -30,7 +34,12 @@ namespace Entity_System.Entity.Enemy
         public bool InView
         {
             get => _inView;
-            set => _inView = value;
+            set
+            {
+               if(_inView != value)
+                    OnViewModeChanged?.Invoke(value);
+                _inView = value;
+            }
         }
     }
 }

@@ -14,17 +14,19 @@ namespace Entity_System.Entity.Enemy
 
             _view.gameObject.SetActive(true);
             _view.SetPosition(_model.Position);
+
+            _model.OnViewModeChanged += _view.gameObject.SetActive;
         }
 
         public override void TickController()
         {
-            //Update Position
+            //Move
             _model.Position = Vector2.MoveTowards(_model.Position, _model.TargetPos, _model.Velocity * Time.time);
-            //Update View
-            _view.gameObject.SetActive(_model.InView);
-            //Update view if being rendered
-            if (_model.InView)
-                UpdateView();
+
+            if (!_model.InView)
+                return;
+            
+            UpdateView();
         }
 
         private void UpdateView()

@@ -102,27 +102,27 @@ namespace Entity_System
 
         private void TickEnemy(Enemy_Controller enemyController)
         {
-            //Update rotation
             Enemy_Model model = enemyController.Model;
-            model.TargetPos = _playerModel.Position;
-
-            //Update Distance
-            model.DistanceFromTarget = model.TargetPos.magnitude;
 
             //Check if enemy is in View
             model.InView = CameraBounds.VectorInBounds(model.Position);
 
-            if(model.DistanceFromTarget >= _maxRadius)
-            {
-                enemyController.Disable();
-                _activeControllers.Remove(enemyController);
-                return;
-            }
+            //Update Target Pos
+            model.TargetPos = _playerModel.Position;
 
-            if(model.DistanceFromTarget <= model.AttackDistance)
-                _playerModel.Damage(model.AttackDamage);
-
+            //Update Enemy
             enemyController.TickController();
+
+            //The others parameters does not need an update since low distance is required
+            if (!model.InView)
+                return;
+
+            //Update Distance
+            model.DistanceFromTarget = model.TargetPos.magnitude;
+
+            //Damage Player
+            if (model.DistanceFromTarget <= model.AttackDistance)
+                _playerModel.Damage(model.AttackDamage);
         }
 
         private Vector2 GetRandomPosition()
