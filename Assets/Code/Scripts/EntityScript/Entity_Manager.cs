@@ -20,7 +20,7 @@ namespace Entity_System
         [SerializeField] private Enemy_SO _enemySO;
         [SerializeField] private float _spawnRadius = 15f;
         [SerializeField] private Color _spawnAreaColor = Color.white;
-        [SerializeField] private float _maxRadius = 20f;
+        [SerializeField] private float _maxRadius = 40f;
         [SerializeField] private Color _maxRadiusColor = Color.red;
         [SerializeField] private int initialEnemyAmount = 15;
 
@@ -32,6 +32,8 @@ namespace Entity_System
         private List<Enemy_Controller> _activeControllers;
 
         private ObjectPooler _enemyViewPooler;
+
+        private Camera _cameraRef;
 
         private void Awake()
         {
@@ -86,6 +88,7 @@ namespace Entity_System
         private void FixedUpdate()
         {
             TickPlayer();
+            CameraBounds.UpdateCameraBounds();
             TickEnemies();
         }
 
@@ -105,6 +108,9 @@ namespace Entity_System
 
             //Update Distance
             model.DistanceFromTarget = model.TargetPos.magnitude;
+
+            //Check if enemy is in View
+            model.InView = CameraBounds.VectorInBounds(model.Position);
 
             if(model.DistanceFromTarget >= _maxRadius)
             {
@@ -149,7 +155,7 @@ namespace Entity_System
 
                 foreach(Enemy_Controller controller in _activeControllers)
                 {
-                    Handles.color = Color.green;
+                    Handles.color = controller.Model.InView? Color.green: new Color(0f, 1f, 0f, 0.25f);
                     Handles.DrawWireDisc(controller.Position, Vector3.forward, controller.Model.AttackDistance);
                 }
             }

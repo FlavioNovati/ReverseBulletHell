@@ -16,7 +16,7 @@ namespace Entity_System.Entity
             lookDir = lookDir.normalized;
             _spriteRenderer.transform.up = lookDir;
         }
-
+        
         public void SetHealth(float percentage) => _healthBar.Progress = percentage;
     }
 }

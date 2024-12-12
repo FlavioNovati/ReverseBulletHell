@@ -2,6 +2,8 @@ namespace Entity_System.Entity.Enemy
 {
     public class Enemy_Model : Entity_Model
     {
+        private bool _inView;
+
         private float _attackDistance;
         private float _attackDamage;
         private float _attackDelay;
@@ -24,5 +26,11 @@ namespace Entity_System.Entity.Enemy
         public float AttackDelay => _attackDelay;
         public float AttackDamage => _attackDamage;
         public float AttackDistance => _attackDistance;
+
+        public bool InView
+        {
+            get => _inView;
+            set => _inView = value;
+        }
     }
 }

@@ -21,7 +21,10 @@ namespace Entity_System.Entity.Enemy
             //Update Position
             _model.Position = Vector2.MoveTowards(_model.Position, _model.TargetPos, _model.Velocity * Time.time);
             //Update View
-            UpdateView();
+            _view.gameObject.SetActive(_model.InView);
+            //Update view if being rendered
+            if (_model.InView)
+                UpdateView();
         }
 
         private void UpdateView()
