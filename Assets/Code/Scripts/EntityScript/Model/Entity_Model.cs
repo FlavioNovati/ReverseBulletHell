@@ -38,7 +38,7 @@ namespace Entity_System.Entity
             set => _position = value;
         }
 
-        public Vector2 Direction
+        public Vector2 TargetPos
         {
             get => _direction;
             set => _direction = value;

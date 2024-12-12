@@ -22,6 +22,11 @@ namespace Entity_System.Entity.UI
                 Vector3 scale = _initialScale;
                 scale.x *= value;
                 _spriteRenderer.transform.localScale = scale;
+
+                if(value >= 1f)
+                    _spriteRenderer.gameObject.SetActive(false);
+                else
+                    _spriteRenderer.gameObject.SetActive(true);
             }
         }
     }

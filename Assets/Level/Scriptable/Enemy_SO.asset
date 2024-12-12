@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_SO
   m_EditorClassIdentifier: 
   HP: 15
-  Velocity: 2
+  Velocity: 0.025
   _enemy_View: {fileID: 2743812332766601062, guid: 2ec657d4e9253e94e8409b07c08598dd, type: 3}
   AttackDistance: 1
   AttackDamage: 1

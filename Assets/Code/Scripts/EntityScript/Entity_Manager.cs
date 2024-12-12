@@ -101,10 +101,10 @@ namespace Entity_System
         {
             //Update rotation
             Enemy_Model model = enemyController.Model;
-            model.Direction = model.Position - _playerModel.Position;
+            model.TargetPos = _playerModel.Position;
 
             //Update Distance
-            model.DistanceFromTarget = model.Direction.magnitude;
+            model.DistanceFromTarget = model.TargetPos.magnitude;
 
             if(model.DistanceFromTarget >= _maxRadius)
             {

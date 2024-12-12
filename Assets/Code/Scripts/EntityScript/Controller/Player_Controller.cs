@@ -28,7 +28,7 @@ namespace Entity_System.Entity.Player
 
         }
 
-        private void UpdateDirection(Vector3 direction) => _model.Direction = direction;
+        private void UpdateDirection(Vector3 direction) => _model.TargetPos = direction;
         private void UpdatePosition(Vector3 position) => _model.Position = position;
     }
 }

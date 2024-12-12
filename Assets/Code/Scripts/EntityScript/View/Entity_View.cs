@@ -13,7 +13,8 @@ namespace Entity_System.Entity
         public void SetPosition(Vector2 position) => transform.position = position;
         public void SetLookDirection(Vector2 lookDir)
         {
-
+            lookDir = lookDir.normalized;
+            _spriteRenderer.transform.up = lookDir;
         }
 
         public void SetHealth(float percentage) => _healthBar.Progress = percentage;

@@ -18,13 +18,15 @@ namespace Entity_System.Entity.Enemy
 
         public override void TickController()
         {
+            //Update Position
+            _model.Position = Vector2.MoveTowards(_model.Position, _model.TargetPos, _model.Velocity * Time.time);
+            //Update View
             UpdateView();
-            //TODO: Move
         }
 
         private void UpdateView()
         {
-            _view.SetLookDirection(_model.Direction);
+            _view.SetLookDirection(_model.TargetPos - _model.Position);
             _view.SetPosition(_model.Position);
             _view.SetHealth(_model.HP);
         }

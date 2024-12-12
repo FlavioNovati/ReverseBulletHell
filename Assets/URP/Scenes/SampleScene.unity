@@ -367,11 +367,11 @@ MonoBehaviour:
   _playerSO: {fileID: 11400000, guid: bb08c3824cbf53c49a6f18fe1c03f2c9, type: 2}
   _playerSpawnTransform: {fileID: 132853229}
   _enemySO: {fileID: 11400000, guid: d8142af3200c25241a6285c9ac2f4615, type: 2}
-  _spawnRadius: 15
+  _spawnRadius: 11.5
   _spawnAreaColor: {r: 1, g: 1, b: 1, a: 1}
-  _maxRadius: 20
+  _maxRadius: 14.2
   _maxRadiusColor: {r: 1, g: 0, b: 0, a: 1}
-  initialEnemyAmount: 60
+  initialEnemyAmount: 300
 --- !u!1 &1916706398
 GameObject:
   m_ObjectHideFlags: 0
